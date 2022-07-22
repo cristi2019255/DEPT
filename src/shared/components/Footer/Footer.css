@@ -1,0 +1,10 @@
+.Footer{
+    position: absolute;
+    bottom: 0;
+}
+
+@media screen and (max-width: 1010px) {
+    #brand {
+      display: none;
+    }
+  }
