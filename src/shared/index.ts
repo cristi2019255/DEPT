@@ -6,6 +6,7 @@ import { ClientCardList } from "./components/ClientCardList/ClientCardList";
 import { ClientQuote } from "./components/ClientQuote/ClientQuote";
 import { ClientList } from "./components/ClientList/ClientList";
 import * as Types from "./types";
+import { WorkSelector } from "./components/WorkSelector/WorkSelector";
 
 export {
   Header,
@@ -16,4 +17,5 @@ export {
   ClientCardList,
   ClientQuote,
   ClientList,
+  WorkSelector,
 };

@@ -1,7 +1,12 @@
-import { ClientCardList, ClientList, ClientQuote } from "../../shared"
-import { ClientCardProps, ClientQuoteProps } from "../../shared/types"
+import { ClientCardList, ClientList, ClientQuote, WorkSelector } from "../../shared"
+import { ClientCardProps, ClientQuoteProps, WorkSelectorProps } from "../../shared/types"
 
 export const HomePage: React.FC = () => {
+    const heroCards: ClientCardProps[] = [
+        {title: 'WORK', description: 'A selection of projects that pioneer tech and marketing to help brands stay ahead.', image: 'https://picsum.photos/300/150?random=1', scaled: "full", 
+        contentWidth: "left"},
+    ]
+
     const cards: ClientCardProps[] = [
         {title: 'BOL.COM', description: 'A Summer island in the Netherlands', image: 'https://picsum.photos/200?random=1', readMoreLink: 'https://www.bol.com/nl/'},
         {title: 'KEMPEN', description: 'Not some average banking website', image: 'https://picsum.photos/200?random=2', readMoreLink: 'https://www.bol.com/nl/'},
@@ -57,12 +62,23 @@ export const HomePage: React.FC = () => {
         'https://picsum.photos/200?random=9',
     ]
 
+    const workSelector: WorkSelectorProps = {
+        industries: ['all', 'design', 'marketing', 'digital', 'media', 'creative', 'business', 'technology', 'other'],
+        services: ['all', 'web', 'print', 'video', 'mobile', 'other'],
+    }
+
     return (
-        <>
-            <ClientCardList cards = {cards}/>
-            <ClientQuote {...quote}/>
-            <ClientCardList cards = {cards2}/>
-            <ClientList clientsLogo = {clientsLogo}/>
+        <>  
+            <section className="hero fw-700">
+                <ClientCardList cards={heroCards}/>
+            </section>
+            <main>
+                <WorkSelector {...workSelector}/>
+                <ClientCardList cards = {cards}/>
+                <ClientQuote {...quote}/>
+                <ClientCardList cards = {cards2}/>
+                <ClientList clientsLogo = {clientsLogo}/>
+            </main>
         </>
     )
 }

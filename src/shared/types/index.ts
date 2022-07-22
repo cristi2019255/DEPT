@@ -8,12 +8,18 @@ export type ClientCardProps = {
   title: string;
   description: string;
   image: string;
-  readMoreLink: string;
+  readMoreLink?: string;
   notes?: Note[];
-  scaled?: "left" | "right";
+  scaled?: "left" | "right" | "full";
+  contentWidth?: "left";
 };
 
 export type ClientQuoteProps = {
   quote: string;
   quoteAuthor: string;
+};
+
+export type WorkSelectorProps = {
+  industries: string[];
+  services: string[];
 };

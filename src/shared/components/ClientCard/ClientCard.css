@@ -6,6 +6,23 @@
     position:absolute;
     bottom: 10%;
     left: 10%;
+    text-align: justify;
+}
+
+.lg-w-30{
+    width: 30%;
+}
+.lg-w-70{
+    width: 70%;
+}
+
+@media screen and (max-width: 768px) {
+    .lg-w-30 {
+        width: 80%;
+    }
+    .lg-w-70 {
+        width: 80%;
+    }
 }
 
 .card-header{
@@ -13,9 +30,9 @@
     font-size: 0.75em;
 }
 
-.card-title{
+.card-body{
     font-weight: 400;
-    font-size: 1.5em;
+    font-size: 4vmin;
 }
 
 .card-footer{
