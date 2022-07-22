@@ -1,0 +1,24 @@
+
+
+.note-title{
+    font-weight: 400;
+    font-size: 1em;
+}
+
+.note-content{
+    font-weight: 400;
+    font-size: 1em;
+}
+
+.note-read-more{
+    font-weight: 400;
+    font-size: 1em;
+}
+
+a{
+  text-decoration: none !important;
+}
+
+.read-more{
+    margin-left: 4%;
+}
