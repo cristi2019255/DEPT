@@ -1,0 +1,32 @@
+.container-wrapper{
+    position: relative;
+}
+
+.card-content{
+    position:absolute;
+    bottom: 10%;
+    left: 10%;
+}
+
+.card-header{
+    font-weight: 400;
+    font-size: 0.75em;
+}
+
+.card-title{
+    font-weight: 400;
+    font-size: 1.5em;
+}
+
+.card-footer{
+    font-weight: 400;
+    font-size: 0.75em;
+}
+
+a{
+  text-decoration: none !important;
+}
+
+.read-more{
+    margin-left: 4%;
+}
