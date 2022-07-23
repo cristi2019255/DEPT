@@ -10,7 +10,7 @@ export const ClientList: React.FC<{clientsLogo: string[]}> = ({clientsLogo}) => 
                     It’s why they often come to our parties. It’s also why we’re able to challenge and inspire 
                     them to reach for the stars.
                 </p>
-                <Container  className = "mt-5">
+                <Container  className = "py-5">
                     <Row className = "row-cols-2 row-cols-md-3 g-5">
                         {clientsLogo.map((clientLogo, index) => {
                             return (

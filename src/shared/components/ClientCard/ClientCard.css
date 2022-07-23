@@ -47,3 +47,15 @@ a{
 .read-more{
     margin-left: 4%;
 }
+
+*:hover .container-wrapper{
+    opacity: 0.9;
+}
+
+.container-wrapper:hover{
+    cursor: pointer;
+    transform: scale(1.02);
+    z-index: 2;
+    transition: all 0.5s ease-in-out;
+    opacity: 1;
+}

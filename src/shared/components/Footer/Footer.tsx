@@ -12,22 +12,22 @@ export const Footer: React.FC<any> = () => {
         <Navbar expand="lg" bg="dark" variant="dark">
         <Container className='justify-content-start'>
           
-          <Navbar.Brand id="brand" href="#home"><Logo></Logo></Navbar.Brand>
+          <Navbar.Brand id="brand" href="/"><Logo></Logo></Navbar.Brand>
           <Nav>
-              <Nav.Link href="#">Work</Nav.Link>
-              <Nav.Link href="#">
+              <Nav.Link href="/work">Work</Nav.Link>
+              <Nav.Link href="/services">
                 Services
               </Nav.Link>
-              <Nav.Link href="#">
+              <Nav.Link href="/stories">
                 Stories
               </Nav.Link>
-              <Nav.Link href="#">
+              <Nav.Link href="/about">
                 About
               </Nav.Link>
-              <Nav.Link href="#">
+              <Nav.Link href="/careers">
                 Careers
               </Nav.Link>
-              <Nav.Link href="#">
+              <Nav.Link href="/contact">
                 Contact
               </Nav.Link>
             </Nav>
@@ -38,11 +38,11 @@ export const Footer: React.FC<any> = () => {
                 <hr/>
                 <Row>
                     <Col md="2"> Chamber of Commerce: 63464101  </Col>
-                    <Col md="2" class='mt-4'> VAT: NL 8552.47.502.B01  </Col>
-                    <Col md="2" class='mt-4'> Terms and conditions  </Col>
-                    <Col md="2" class='mt-4'> </Col>
-                    <Col md="2" class='mt-4'> </Col>
-                    <Col md="2" class='mt-4'> © 2020 Dept Agency </Col> 
+                    <Col md="2" className='mt-4'> VAT: NL 8552.47.502.B01  </Col>
+                    <Col md="2" className='mt-4'> Terms and conditions  </Col>
+                    <Col md="2" className='mt-4'> </Col>
+                    <Col md="2" className='mt-4'> </Col>
+                    <Col md="2" className='mt-4'> © 2020 Dept Agency </Col> 
                 </Row>
             </Container>
             

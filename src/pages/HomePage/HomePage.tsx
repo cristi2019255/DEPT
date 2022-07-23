@@ -1,5 +1,5 @@
-import { ClientCardList, ClientList, ClientQuote, WorkSelector } from "../../shared"
-import { ClientCardProps, ClientQuoteProps, WorkSelectorProps } from "../../shared/types"
+import { ClientCardList, ClientList, ClientQuote, ContactForm, WorkSelector } from "../../shared"
+import { ClientCardProps, ClientQuoteProps, ContactData, WorkSelectorProps } from "../../shared/types"
 
 export const HomePage: React.FC = () => {
     const heroCards: ClientCardProps[] = [
@@ -8,10 +8,10 @@ export const HomePage: React.FC = () => {
     ]
 
     const cards: ClientCardProps[] = [
-        {title: 'BOL.COM', description: 'A Summer island in the Netherlands', image: 'https://picsum.photos/200?random=1', readMoreLink: 'https://www.bol.com/nl/'},
-        {title: 'KEMPEN', description: 'Not some average banking website', image: 'https://picsum.photos/200?random=2', readMoreLink: 'https://www.bol.com/nl/'},
-        {title: 'PHILIPS', description: 'Beautiful design meets innovative technology', image: 'https://picsum.photos/200?random=3', readMoreLink: 'https://www.bol.com/nl/'},
-        {title: 'GEMEENTEMUSEUM', description: 'A 100 years of Mondriaan & De Stijl', image: 'https://picsum.photos/200?random=4', readMoreLink: 'https://www.bol.com/nl/'},
+        {title: 'BOL.COM', description: 'A Summer island in the Netherlands', image: 'https://picsum.photos/200?random=1', readMoreLink: 'https://www.bol.com/nl/', industry:'mobile', serviceDomain: 'marketing'},
+        {title: 'KEMPEN', description: 'Not some average banking website', image: 'https://picsum.photos/200?random=2', readMoreLink: 'https://www.bol.com/nl/', industry:'mobile', serviceDomain: 'marketing'},
+        {title: 'PHILIPS', description: 'Beautiful design meets innovative technology', image: 'https://picsum.photos/200?random=3', readMoreLink: 'https://www.bol.com/nl/', industry:'design', serviceDomain: 'marketing'},
+        {title: 'GEMEENTEMUSEUM', description: 'A 100 years of Mondriaan & De Stijl', image: 'https://picsum.photos/200?random=4', readMoreLink: 'https://www.bol.com/nl/', industry:'mobile', serviceDomain: 'web'},
      
         {title: 'FLORENSIS', description: 'Rethinking the entire online ecosystem', image: 'https://picsum.photos/300/200?random=5', readMoreLink: 'https://www.bol.com/nl/',
         notes: 
@@ -78,6 +78,7 @@ export const HomePage: React.FC = () => {
                 <ClientQuote {...quote}/>
                 <ClientCardList cards = {cards2}/>
                 <ClientList clientsLogo = {clientsLogo}/>
+                <ContactForm onSubmit={(e: ContactData) => console.log(e)}/>
             </main>
         </>
     )

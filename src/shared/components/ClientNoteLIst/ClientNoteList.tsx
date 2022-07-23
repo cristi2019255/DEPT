@@ -6,9 +6,9 @@ export const ClientNoteList: React.FC<{notes: Note[]}> = ({notes}) => {
     return (
         <>
             { notes.map((note: Note, index: number) =>  (
-                <>
-                    {index !== 0 && <hr key={index}/>}
-                    <div key={index}>
+                <div key={index}>
+                    {index !== 0 && <hr/>}
+                    <div>
                         <div className="note-title">{note.title}</div>
                         <div className="note-content">{note.content}</div>
                         <a className="note-read-more text-light" href={note.readMoreLink}>
@@ -20,7 +20,7 @@ export const ClientNoteList: React.FC<{notes: Note[]}> = ({notes}) => {
                             </div> 
                         </a>
                     </div>
-                </>
+                </div>
             )
         )}
         </>

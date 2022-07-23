@@ -1,5 +1,24 @@
 .App{
   min-height: 100vh;
   position: relative;
+  font-size: 1em;
+  font-weight: 400;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
+#main-content {
+  min-height: calc(100vh - 155px);
+}
+
+@media screen and (max-width: 1024px) {
+  #main-content {
+    min-height: calc(100vh - 352px);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #main-content {
+    min-height: calc(100vh - 486px);
+  }
+}

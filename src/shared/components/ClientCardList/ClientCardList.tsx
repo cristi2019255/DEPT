@@ -1,3 +1,4 @@
+import { Fragment } from "react"
 import { Col, Container, Row } from "react-bootstrap"
 import { ClientCardProps } from "../../types"
 import { ClientCard } from "../ClientCard/ClientCard"
@@ -18,26 +19,26 @@ export const ClientCardList: React.FC<{cards: ClientCardProps[]}> = ({cards}) =>
                         }
                     }
                     return (
-                        <>
-                        { ((card.scaled && card.scaled !== 'right') || !card.scaled) && 
-                            <Col key={index} xs={12} sm={12} md={12} lg={colWidth}>
-                                <ClientCard {...card} />
-                            </Col>
-                        }
-                        
-                        {card.notes && 
-                            <Col className = 'bg-dark text-light' key={index} xs={12} sm={12} md={12} lg={12 - colWidth}>
-                                <Container className = "d-flex flex-column h-100 justify-content-center p-5">
-                                    <ClientNoteList notes = {card.notes}/>
-                                </Container>
-                            </Col>
-                        }
-                        { (card.scaled && card.scaled === 'right')  && 
-                            <Col key={index} xs={12} sm={12} md={12} lg={colWidth}>
-                                <ClientCard {...card} />
-                            </Col>
-                        }
-                        </>
+                        <Fragment key={index}>
+                            { ((card.scaled && card.scaled !== 'right') || !card.scaled) && 
+                                <Col xs={12} sm={12} md={colWidth} lg={colWidth}>
+                                    <ClientCard {...card} />
+                                </Col>
+                            }
+                            
+                            {card.notes && 
+                                <Col className = 'bg-dark text-light' xs={12} sm={12} md={12 - colWidth} lg={12 - colWidth}>
+                                    <Container className = "d-flex flex-column h-100 justify-content-center p-5">
+                                        <ClientNoteList notes = {card.notes}/>
+                                    </Container>
+                                </Col>
+                            }
+                            { (card.scaled && card.scaled === 'right')  && 
+                                <Col xs={12} sm={12} md={colWidth} lg={colWidth}>
+                                    <ClientCard {...card} />
+                                </Col>
+                            }
+                        </Fragment>
                     )
                 }
                 )}

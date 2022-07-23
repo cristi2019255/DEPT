@@ -6,7 +6,7 @@ export const Header: React.FC<any> = () => {
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="#" >
+          <Navbar.Brand href="/" >
             <Logo></Logo>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -15,20 +15,23 @@ export const Header: React.FC<any> = () => {
               
             </Nav>
             <Nav>
-              <Nav.Link href="#">Work</Nav.Link>
-              <Nav.Link href="#">
+              <Nav.Link href='/work'>
+                Work
+              </Nav.Link>
+
+              <Nav.Link href='/services'>
                 Services
               </Nav.Link>
-              <Nav.Link href="#">
+              <Nav.Link href="/stories">
                 Stories
               </Nav.Link>
-              <Nav.Link href="#">
+              <Nav.Link href="/about">
                 About
               </Nav.Link>
-              <Nav.Link href="#">
+              <Nav.Link href="/careers">
                 Careers
               </Nav.Link>
-              <Nav.Link href="#">
+              <Nav.Link href="/contact">
                 Contact
               </Nav.Link>
             </Nav>

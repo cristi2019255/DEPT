@@ -12,6 +12,8 @@ export type ClientCardProps = {
   notes?: Note[];
   scaled?: "left" | "right" | "full";
   contentWidth?: "left";
+  industry?: string;
+  serviceDomain?: string;
 };
 
 export type ClientQuoteProps = {
@@ -22,4 +24,14 @@ export type ClientQuoteProps = {
 export type WorkSelectorProps = {
   industries: string[];
   services: string[];
+};
+
+export type ContactData = {
+  name: string;
+  email: string;
+  message: string;
+};
+
+export type ContactFormProps = {
+  onSubmit: (formData: ContactData) => void;
 };
