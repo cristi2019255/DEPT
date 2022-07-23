@@ -3,6 +3,7 @@ import { Col, Container, Row } from "react-bootstrap"
 import { ClientCardProps } from "../../types"
 import { ClientCard } from "../ClientCard/ClientCard"
 import { ClientNoteList } from "../ClientNoteLIst/ClientNoteList"
+import './ClientCardList.css'
 
 export const ClientCardList: React.FC<{cards: ClientCardProps[]}> = ({cards}) => {
     

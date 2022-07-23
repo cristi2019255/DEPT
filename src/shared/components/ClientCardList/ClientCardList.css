@@ -1,0 +1,8 @@
+.scroll-effect-wrapper{
+    scroll-behavior: smooth;
+    overflow: auto;
+    scroll-snap-type: y mandatory;
+}
+.scroll-effect{
+    scroll-snap-align: start;
+}
