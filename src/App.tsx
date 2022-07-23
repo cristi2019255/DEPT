@@ -8,7 +8,6 @@ import {
 } from 'react-router-dom';
 
 function App() {
-
   return (
     <div className="App bg-dark text-light fw-400">
       <div id="main-content">

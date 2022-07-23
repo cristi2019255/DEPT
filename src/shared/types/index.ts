@@ -24,6 +24,8 @@ export type ClientQuoteProps = {
 export type WorkSelectorProps = {
   industries: string[];
   services: string[];
+  selectedIndustry?: string;
+  selectedService?: string;
 };
 
 export type ContactData = {

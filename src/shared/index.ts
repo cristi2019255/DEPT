@@ -9,6 +9,7 @@ import * as Types from "./types";
 import { WorkSelector } from "./components/WorkSelector/WorkSelector";
 import { ContactForm } from "./components/ContactForm/ContactForm";
 import { ToTopButton } from "./components/ToTopButton/ToTopButton";
+import { Loading } from "./components/LoadingSpinner/Loading";
 
 export {
   Header,
@@ -22,4 +23,5 @@ export {
   WorkSelector,
   ContactForm,
   ToTopButton,
+  Loading,
 };
