@@ -18,11 +18,6 @@ export const HomePage: React.FC = () => {
     const workSelector: {isLoading:boolean, data:WorkSelectorProps} = useSelector((state: any) => state.homePage.categories);
     const quote: {isLoading:boolean, data:ClientQuoteProps} = useSelector((state: any) => state.homePage.quote);
 
-    const onSubmitContactForm = (data: ContactData) => {
-        console.log(data);
-    }
-
-
     const fetchData = () => {
         dispatch<any>(fetchHero())
         dispatch<any>(fetchCategories())
@@ -56,7 +51,7 @@ export const HomePage: React.FC = () => {
                                 {clientsLogos.isLoading? <Loading/> :
                                 <>
                                 <ClientList clientsLogo = {clientsLogos.data}/>
-                                <ContactForm onSubmit={onSubmitContactForm}/>
+                                <ContactForm/>
                                 </>}
                             </>}
                         </>}

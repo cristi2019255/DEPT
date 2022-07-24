@@ -14,3 +14,9 @@
     background: transparent;
     border-bottom: 1px solid #DDDDDD;
 }
+.error{
+    font-size: 0.8rem !important;
+}
+.success{
+    font-size: 1rem !important;
+}

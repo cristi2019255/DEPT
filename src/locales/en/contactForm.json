@@ -3,5 +3,10 @@
   "label.contactForm.name": "Name",
   "label.contactForm.email": "Email",
   "label.contactForm.message": "Message",
-  "button.contactForm.send": "send"
+  "button.contactForm.send": "send",
+  "label.error.name": "The name must be at least 5 characters long!",
+  "label.error.email": "Email is not valid!",
+  "label.error.message": "Message must be at least 20 characters long!",
+  "label.error.general": "Please check all the fields one more time ...",
+  "label.success.general": "Your message has been sent successfully!"
 }

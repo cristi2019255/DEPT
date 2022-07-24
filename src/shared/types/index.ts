@@ -33,7 +33,3 @@ export type ContactData = {
   email: string;
   message: string;
 };
-
-export type ContactFormProps = {
-  onSubmit: (formData: ContactData) => void;
-};

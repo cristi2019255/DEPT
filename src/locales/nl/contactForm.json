@@ -3,5 +3,10 @@
   "label.contactForm.name": "Naam",
   "label.contactForm.email": "Email",
   "label.contactForm.message": "Bericht",
-  "button.contactForm.send": "versturen"
+  "button.contactForm.send": "versturen",
+  "label.error.name": "De naam moet minimaal 5 tekens lang zijn!",
+  "label.error.email": "E-mail is niet geldig!",
+  "label.error.message": "Bericht moet minimaal 20 tekens lang zijn!",
+  "label.error.general": "Controleer alle velden nog een keer...",
+  "label.success.general": "Uw bericht is succesvol verzonden!"
 }
