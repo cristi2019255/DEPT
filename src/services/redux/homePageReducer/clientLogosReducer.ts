@@ -11,7 +11,6 @@ const clientLogosReducer = createSlice({
   },
   reducers: {
     fetchClientLogos: (state) => {
-      console.log("fetching client logos ...");
       state.data = clientsLogo;
       state.isLoading = false;
     },

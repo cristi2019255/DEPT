@@ -18,12 +18,10 @@ const clientCardsReducer = createSlice({
   },
   reducers: {
     fetchClientCardsFirst: (state) => {
-      console.log("fetching first client cards ...");
       state.first.data = clientCardsFirst;
       state.first.isLoading = false;
     },
     fetchClientCardsSecond: (state) => {
-      console.log("fetching second client cards ...");
       state.second.data = clientCardsSecond;
       state.second.isLoading = false;
     },

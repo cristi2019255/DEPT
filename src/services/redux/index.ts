@@ -1,6 +1,7 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { useDispatch } from "react-redux";
+import thunkMiddleware from "redux-thunk";
 import homePageReducer, {
-  fetchHero,
   fetchCategories,
   fetchClientCardsFirst,
   fetchClientCardsSecond,
@@ -16,10 +17,14 @@ const rootReducer = combineReducers({
 
 export const store = configureStore({
   reducer: rootReducer,
+  devTools: process.env.NODE_ENV !== "production",
+  middleware: [thunkMiddleware],
 });
 
+export type AppDispatch = typeof store.dispatch;
+export const useAppDispatch: () => AppDispatch = useDispatch;
+
 export {
-  fetchHero,
   fetchCategories,
   fetchClientCardsFirst,
   fetchClientCardsSecond,

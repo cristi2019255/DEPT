@@ -12,7 +12,6 @@ const quoteReducer = createSlice({
   },
   reducers: {
     fetchQuote: (state) => {
-      console.log("fetching hero");
       state.data = quote;
       state.isLoading = false;
     },

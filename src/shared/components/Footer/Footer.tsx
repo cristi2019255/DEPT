@@ -5,8 +5,12 @@ import Navbar from 'react-bootstrap/Navbar';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import { Logo } from '../logo';
+import { useTranslation } from 'react-i18next';
 
 export const Footer: React.FC<any> = () => {
+
+    const {t} = useTranslation('common');
+
     return (
         <div className='Footer w-100 bg-dark text-light'>
         <Navbar expand="lg" bg="dark" variant="dark">
@@ -14,21 +18,23 @@ export const Footer: React.FC<any> = () => {
           
           <Navbar.Brand id="brand" href="/"><Logo></Logo></Navbar.Brand>
           <Nav>
-              <Nav.Link href="/work">Work</Nav.Link>
+              <Nav.Link href="/work">
+                {t('label.work')}
+              </Nav.Link>
               <Nav.Link href="/services">
-                Services
+                {t('label.services')}
               </Nav.Link>
               <Nav.Link href="/stories">
-                Stories
+                {t('label.stories')}
               </Nav.Link>
               <Nav.Link href="/about">
-                About
+                {t('label.about')}
               </Nav.Link>
               <Nav.Link href="/careers">
-                Careers
+                {t('label.careers')}
               </Nav.Link>
               <Nav.Link href="/contact">
-                Contact
+                {t('label.contact')}
               </Nav.Link>
             </Nav>
         </Container>
@@ -37,12 +43,12 @@ export const Footer: React.FC<any> = () => {
             <Container>
                 <hr/>
                 <Row>
-                    <Col md="2"> Chamber of Commerce: 63464101  </Col>
-                    <Col md="2" className='mt-4'> VAT: NL 8552.47.502.B01  </Col>
-                    <Col md="2" className='mt-4'> Terms and conditions  </Col>
+                    <Col md="2" className='mt-4'> {t('label.copyright.details.first')}  </Col>
+                    <Col md="2" className='mt-4'> {t('label.copyright.details.second')}  </Col>
+                    <Col md="2" className='mt-4'> {t('label.copyright.termsAndConditions')}  </Col>
                     <Col md="2" className='mt-4'> </Col>
                     <Col md="2" className='mt-4'> </Col>
-                    <Col md="2" className='mt-4'> © 2020 Dept Agency </Col> 
+                    <Col md="2" className='mt-4'> {t('label.copyright.details.third')} </Col> 
                 </Row>
             </Container>
             

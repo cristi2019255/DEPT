@@ -10,12 +10,16 @@ export const ClientCardList: React.FC<{cards: ClientCardProps[]}> = ({cards}) =>
     
     const industryFilter: string = useSelector((state: any) => state.homePage.categories.data.selectedIndustry);
     const serviceFilter: string = useSelector((state: any) => state.homePage.categories.data.selectedService);
-    
+
+    const cardsFiltered = cards.filter((card: ClientCardProps) => {
+        return (industryFilter === "all" || (card.industry && (card.industry === industryFilter || card.industry === 'all'))) &&
+               (serviceFilter  === "all" || (card.serviceDomain && (card.serviceDomain === serviceFilter || card.serviceDomain === 'all')))
+    })
 
     return (
         <div className="w-100">
             <Row className = "gx-0">
-                { cards.map((card: ClientCardProps, index: number) => {
+                { cardsFiltered.map((card: ClientCardProps, index: number) => {
                     let colWidth = 6
                     if (card.scaled){
                         if (card.scaled === "full"){
@@ -24,9 +28,7 @@ export const ClientCardList: React.FC<{cards: ClientCardProps[]}> = ({cards}) =>
                             colWidth = 8
                         }
                     }
-                    if (((card.industry && card.industry === industryFilter) || industryFilter === "all") &&
-                        ((card.serviceDomain && card.serviceDomain === serviceFilter) || serviceFilter === "all")){
-                            return (
+                    return (
                                 <Fragment key={index}>
                                     { ((card.scaled && card.scaled !== 'right') || !card.scaled) && 
                                         <Col xs={12} sm={12} md={colWidth} lg={colWidth}>
@@ -47,10 +49,9 @@ export const ClientCardList: React.FC<{cards: ClientCardProps[]}> = ({cards}) =>
                                         </Col>
                                     }
                                 </Fragment>
-                            )
-                        }
+                        )
+                    })
                 }
-                )}
             </Row>
         </div>    
         )

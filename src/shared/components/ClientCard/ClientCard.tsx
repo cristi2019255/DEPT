@@ -1,8 +1,11 @@
+import { useTranslation } from "react-i18next";
 import { ClientCardProps } from "../../types"
 import { Target } from "../Target"
 import './ClientCard.css'
 
 export const ClientCard: React.FC<ClientCardProps> = ({title, description, image, readMoreLink, contentWidth}) => {
+    const {t} = useTranslation('common');
+    
     return (
         <div className="container-wrapper text-light h-100">
             <img className="w-100 h-100" src={image} alt={title} />
@@ -14,7 +17,7 @@ export const ClientCard: React.FC<ClientCardProps> = ({title, description, image
                         <Target></Target>
                     </div>
                     <div className="d-inline read-more">
-                        Read More
+                        {t('label.readMore')}
                     </div>
                 </a>}
             </div>

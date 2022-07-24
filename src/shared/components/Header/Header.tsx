@@ -6,6 +6,8 @@ import { Logo } from '../logo';
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import './Header.css';
+import { LanguageSwitcher } from '../LanguageSwitcher/LanguageSwitcher';
+import { useTranslation } from 'react-i18next';
 
 const ToggleIcon = styled.span`
   position: relative;
@@ -40,6 +42,8 @@ const ToggleIcon = styled.span`
 export const Header: React.FC<any> = () => {
     const [isFullMenu, setFullMenu] = useState(false);
     
+    const {t} = useTranslation('common');
+
     const handleClick = () => { setFullMenu(!isFullMenu) };
 
     useLayoutEffect(() => {
@@ -62,26 +66,25 @@ export const Header: React.FC<any> = () => {
 
           <Navbar.Collapse id="responsive-navbar-nav" className='px-3'>
             <Nav className="me-auto">
-              
             </Nav>
             <Nav>
               <Nav.Link href='/work'>
-                Work
+                {t('label.work')}
               </Nav.Link>
               <Nav.Link href='/services'>
-                Services
+                {t('label.services')}
               </Nav.Link>
               <Nav.Link href="/stories">
-                Stories
+                {t('label.stories')}
               </Nav.Link>
               <Nav.Link href="/about">
-                About
+                {t('label.about')}
               </Nav.Link>
               <Nav.Link href="/careers">
-                Careers
+                {t('label.careers')}
               </Nav.Link>
               <Nav.Link href="/contact">
-                Contact
+                {t('label.contact')}
               </Nav.Link>
               
             </Nav>
@@ -92,41 +95,46 @@ export const Header: React.FC<any> = () => {
           <div className="d-flex align-items-center ToggleIconWrapper" onClick={handleClick}>
             <ToggleIcon clicked={isFullMenu}>&nbsp;</ToggleIcon>
           </div>
+
           <nav className = {isFullMenu? "FullMenuContent w-100 opacity-1":"FullMenuContent w-0 opacity-0"}>
+              
               <Container className='FullMenuList'>
-                  <NavLink className="FullMenuItem" onClick={handleClick} to="/">
-                    Home
-                  </NavLink>
+                  <div className='d-flex flex-sm-row flex-column justify-content-between'>
+                    <div className='FullMenuLanguageSwitcher my-4 my-sm-0'>
+                          <LanguageSwitcher/>
+                    </div>
+                    
+                    <NavLink className="FullMenuItem" onClick={handleClick} to="/">
+                      {t('label.home')}
+                    </NavLink>
+                  </div>
                   <hr/>
                   <NavLink className="FullMenuItem" onClick={handleClick} to="/work">
-                    Work
+                    {t('label.work')}
                   </NavLink>
                   <hr/>
                   <NavLink className="FullMenuItem" onClick={handleClick} to='/services'>
-                    Services
+                    {t('label.services')}
                   </NavLink>
                   <hr/>
                   <NavLink className="FullMenuItem" onClick={handleClick} to="/stories">
-                    Stories
+                    {t('label.stories')}
                   </NavLink>
                   <hr/>
                   <NavLink className="FullMenuItem" onClick={handleClick} to="/about">
-                    About
+                    {t('label.about')}
                   </NavLink>
                   <hr/>
                   <NavLink className="FullMenuItem" onClick={handleClick} to="/careers">
-                    Careers
+                    {t('label.careers')}
                   </NavLink>
                   <hr/>
                   <NavLink className="FullMenuItem" onClick={handleClick} to="/contact">
-                    Contact
+                    {t('label.contact')}
                   </NavLink>
                   <hr/>
               </Container>
-            
           </nav>
-          
-        
         </Container>
       </Navbar>
     );

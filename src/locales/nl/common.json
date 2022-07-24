@@ -1,0 +1,24 @@
+{
+  "language.en": "Engels",
+  "language.nl": "Nederlanden",
+
+  "label.work": "Werk",
+  "label.home": "Huis",
+  "label.services": "Diensten",
+  "label.contact": "Contact",
+  "label.careers": "Carrières",
+  "label.about": "Over",
+  "label.stories": "Verhalen",
+  "label.loading": "Laden...",
+  "label.error": "Fout",
+  "label.error.404": "404 Pagina niet gevonden",
+  "label.readMore": "Lees meer",
+
+  "label.copyright.details.first": "Kamer van Koophandel: 63464101",
+  "label.copyright.details.second": " VAT: NL 8552.47.502.B01",
+  "label.copyright.details.third": "© 2020 Dept Agency",
+  "label.copyright.termsAndConditions": "Voorwaarden",
+
+  "label.clientList.title": "Klanten",
+  "label.clientList.subtitle": "We hechten boven alles aan een goede werkrelatie met onze klanten. Daarom komen ze vaak naar onze feesten. Het is ook waarom we ze kunnen uitdagen en inspireren om naar de sterren te reiken."
+}

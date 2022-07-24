@@ -18,13 +18,11 @@ const categoriesReducer = createSlice({
   },
   reducers: {
     fetchCategories: (state) => {
-      console.log("fetching client logos ...");
       state.data.industries = workSelector.industries;
       state.data.services = workSelector.services;
       state.isLoading = false;
     },
     setSelectedIndustry: (state, action) => {
-      console.log(`setting selected industry to ${action.payload}`);
       state.data.selectedIndustry = action.payload;
     },
     setSelectedService: (state, action) => {

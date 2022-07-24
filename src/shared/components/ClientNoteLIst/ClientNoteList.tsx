@@ -1,8 +1,11 @@
+import { useTranslation } from "react-i18next";
 import { Note } from "../../types";
 import { Target } from "../Target";
 import './ClientNoteList.css';
 
 export const ClientNoteList: React.FC<{notes: Note[]}> = ({notes}) => {    
+    const {t} = useTranslation('common');
+    
     return (
         <>
             { notes.map((note: Note, index: number) =>  (
@@ -16,7 +19,7 @@ export const ClientNoteList: React.FC<{notes: Note[]}> = ({notes}) => {
                                 <Target></Target>
                             </div>
                             <div className="d-inline read-more">
-                                Read More
+                                {t('label.readMore')}
                             </div> 
                         </a>
                     </div>

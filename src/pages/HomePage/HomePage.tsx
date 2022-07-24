@@ -1,8 +1,9 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCategories, fetchClientCardsFirst, fetchClientCardsSecond, fetchClientLogos, fetchHero, fetchQuote } from "../../services/redux";
+import { fetchClientCardsFirst, fetchClientCardsSecond, fetchClientLogos} from "../../services/redux";
+import { fetchHero } from "../../services/redux/homePageReducer/heroReducer";
 import { ClientCardList, ClientList, ClientQuote, ContactForm, Loading, WorkSelector } from "../../shared"
-import { ClientCardProps, ClientQuoteProps, ContactData, WorkSelectorProps } from "../../shared/types"
+import { ClientCardProps, ContactData} from "../../shared/types"
 import './HomePage.css'
 
 
@@ -13,7 +14,6 @@ export const HomePage: React.FC = () => {
     const hero: {isLoading:boolean, data:ClientCardProps[]} = useSelector((state: any) => state.homePage.hero);
     const clientCardsFirst: {isLoading:boolean, data:ClientCardProps[]} = useSelector((state: any) => state.homePage.client.first);
     const clientCardsSecond: {isLoading:boolean, data:ClientCardProps[]} = useSelector((state: any) => state.homePage.client.second);
-    const clientQuote: {isLoading:boolean, data:ClientQuoteProps} = useSelector((state: any) => state.homePage.quote);
     const clientsLogos: {isLoading:boolean, data:string[]} = useSelector((state: any) => state.homePage.logos);
 
 
@@ -23,10 +23,9 @@ export const HomePage: React.FC = () => {
 
 
     const fetchData = () => {
-        dispatch(fetchHero())
+        dispatch<any>(fetchHero()) // works but don't like it
         dispatch(fetchClientCardsFirst())
         dispatch(fetchClientCardsSecond())
-        dispatch(fetchQuote())
         dispatch(fetchClientLogos())
     }
 
@@ -34,19 +33,20 @@ export const HomePage: React.FC = () => {
 
     return (
         <>  
-            {
-            hero.isLoading ? <Loading /> : 
+            {!hero.isLoading ? 
                 <section className="hero fw-700">
                     <ClientCardList cards={hero.data}/>
                 </section>
+                : <></>
             }
 
             <main>
                 <WorkSelector/>
-                <ClientCardList cards = {clientCardsFirst.data}/>
-                <ClientQuote {...clientQuote.data}/>
-                <ClientCardList cards = {clientCardsSecond.data}/>
-                <ClientList clientsLogo = {clientsLogos.data}/>
+                {!clientCardsFirst.isLoading ? <ClientCardList cards = {clientCardsFirst.data}/> : <></>}
+                <ClientQuote/>
+                {!clientCardsSecond.isLoading? <ClientCardList cards = {clientCardsSecond.data}/>:<></>}
+                {!clientsLogos.isLoading? <ClientList clientsLogo = {clientsLogos.data}/>:<></>}
+                {hero.isLoading || clientCardsFirst.isLoading || clientCardsSecond.isLoading || clientsLogos.isLoading ? <Loading/> : <></>}
                 <ContactForm onSubmit={onSubmitContactForm}/>
             </main>
         </>

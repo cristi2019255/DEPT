@@ -1,14 +1,15 @@
 import { Col, Container, Row } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
 import './ClientList.css';
 export const ClientList: React.FC<{clientsLogo: string[]}> = ({clientsLogo}) => {
+    const {t} = useTranslation("common");
+
     return (
         <Container className = "mt-5 mb-5">
             <div>
-                <p className = 'title'>Clients</p>
+                <p className = 'title'>{t("label.clientList.title")}</p>
                 <p className="subtitle"> 
-                    We value a great working relationship with our clients above all else. 
-                    It’s why they often come to our parties. It’s also why we’re able to challenge and inspire 
-                    them to reach for the stars.
+                    {t("label.clientList.subtitle")}
                 </p>
                 <Container  className = "py-5">
                     <Row className = "row-cols-2 row-cols-md-3 g-5">

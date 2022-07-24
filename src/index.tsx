@@ -5,8 +5,12 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'font-awesome/css/font-awesome.min.css';
+import './i18n';
+
 import { Provider } from 'react-redux';
 import { store } from './services/redux';
+
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
