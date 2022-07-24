@@ -1,18 +1,11 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchQuote } from "../../../services/redux";
+import { useSelector } from "react-redux";
 import { ClientQuoteProps } from "../../types"
 import './ClientQuote.css'
 
 export const ClientQuote: React.FC = () => {
-    const dispatch = useDispatch();
+
     const clientQuote: {isLoading:boolean, data:ClientQuoteProps} = useSelector((state: any) => state.homePage.quote);
     
-    useEffect(() => { dispatch(fetchQuote()) }, []);
-
-    if (!clientQuote.isLoading) {
-        return <></>
-    }
     return (
         <div className="w-100 p-5">
             <div className="text-center">

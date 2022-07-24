@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { ClientCardProps } from "../../../shared/types";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { hero } from "../mock";
 
 const initialCards: ClientCardProps[] = [];
 
@@ -10,18 +11,8 @@ const fetchHero = createAsyncThunk("fetchHero", async () => {
   const data = await response.json();
   console.log(data);
 
-  const data1: ClientCardProps[] = [
-    {
-      title: data.title,
-      description: data.body,
-      image: "https://picsum.photos/500/200",
-      scaled: "full",
-      industry: "all",
-      serviceDomain: "all",
-    },
-  ];
-
-  return data1;
+  // returning mock since the API is not developed yet
+  return hero;
 });
 
 const heroReducer = createSlice({

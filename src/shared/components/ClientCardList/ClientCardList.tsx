@@ -16,10 +16,12 @@ export const ClientCardList: React.FC<{cards: ClientCardProps[]}> = ({cards}) =>
                (serviceFilter  === "all" || (card.serviceDomain && (card.serviceDomain === serviceFilter || card.serviceDomain === 'all')))
     })
 
+   const cardsSorted = arrangeCards(cardsFiltered)
+    
     return (
         <div className="w-100">
             <Row className = "gx-0">
-                { cardsFiltered.map((card: ClientCardProps, index: number) => {
+                { cardsSorted.map((card: ClientCardProps, index: number) => {
                     let colWidth = 6
                     if (card.scaled){
                         if (card.scaled === "full"){
@@ -28,31 +30,71 @@ export const ClientCardList: React.FC<{cards: ClientCardProps[]}> = ({cards}) =>
                             colWidth = 8
                         }
                     }
-                    return (
-                                <Fragment key={index}>
-                                    { ((card.scaled && card.scaled !== 'right') || !card.scaled) && 
-                                        <Col xs={12} sm={12} md={colWidth} lg={colWidth}>
-                                            <ClientCard {...card} />
-                                        </Col>
-                                    }
-                                    
-                                    {card.notes && 
-                                        <Col className = 'bg-dark text-light' xs={12} sm={12} md={12 - colWidth} lg={12 - colWidth}>
+
+                    const cardCol = (<Col xs={12} sm={12} md={colWidth} lg={colWidth}>
+                                        <ClientCard {...card} />
+                                    </Col>)
+
+                    if (card.notes){
+                        const notes = (<Col className = 'bg-dark text-light' xs={12} sm={12} md={12 - colWidth} lg={12 - colWidth}>
                                             <Container className = "d-flex flex-column h-100 justify-content-center p-5">
                                                 <ClientNoteList notes = {card.notes}/>
                                             </Container>
-                                        </Col>
-                                    }
-                                    { (card.scaled && card.scaled === 'right')  && 
-                                        <Col xs={12} sm={12} md={colWidth} lg={colWidth}>
-                                            <ClientCard {...card} />
-                                        </Col>
-                                    }
-                                </Fragment>
-                        )
+                                        </Col>)
+
+                            return (<Row key={index} className = {((card.scaled && card.scaled !== 'right') || !card.scaled) ? "gx-0" : "gx-0 flex-row-reverse"}>
+                                        {cardCol}
+                                        {notes}
+                                    </Row>)
+                    }
+                    
+
+                    return (<Fragment key={index}>
+                                {cardCol}
+                            </Fragment>)
                     })
                 }
             </Row>
         </div>    
         )
 } 
+
+const arrangeCards: (cards:ClientCardProps[]) => ClientCardProps[] = (cards: ClientCardProps[]) => {
+    /* Sorting cards in order to not allow gaps between cards on size medium+ devices */
+    
+    /* If window size is small no arrangement is needed */
+    if (window.innerWidth < 768) {
+        return cards
+    }
+
+    let cardsSorted: ClientCardProps[] = []
+    
+    let cardsToPush: ClientCardProps[] = []
+    let partialCards = 0
+       
+    cards.forEach((card: ClientCardProps) => {
+        if (card.notes){
+            if (partialCards % 2 !== 0 ){
+                cardsToPush.push(card)
+            }else{
+                cardsSorted.push(card)
+            }
+        }else{
+          if (cardsToPush.length > 0 && partialCards % 2 === 0){
+                cardsSorted = cardsSorted.concat(cardsToPush)
+                cardsToPush = []
+            }
+                
+            cardsSorted.push(card)
+            partialCards++
+        }
+    })
+
+    /* Append the full cards that are left and move the last partial to the end if needed */   
+    if (cardsToPush.length > 0){
+        cardsSorted = partialCards % 2 === 0 ? 
+        cardsSorted = cardsSorted.concat(cardsToPush):
+        cardsSorted = cardsSorted.slice(0, -1).concat(cardsToPush).concat(cardsSorted.slice(-1))
+    }
+    return cardsSorted
+}

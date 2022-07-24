@@ -1,8 +1,7 @@
-import { useEffect } from "react";
 import { Dropdown } from "react-bootstrap"
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCategories, setSelectedIndustry, setSelectedService } from "../../../services/redux";
+import { setSelectedIndustry, setSelectedService } from "../../../services/redux";
 import { WorkSelectorProps } from "../../types"
 import './WorkSelector.css'
 
@@ -11,15 +10,9 @@ export const WorkSelector: React.FC = () =>{
     // using translation
     const {t} = useTranslation('home');
 
-    
     const dispatch = useDispatch();
-    const workSelector: {isLoading:boolean, data:WorkSelectorProps} = useSelector((state: any) => state.homePage.categories);
+    const workSelector: {isLoading:boolean, data:WorkSelectorProps, error: string} = useSelector((state: any) => state.homePage.categories);
     
-    useEffect(() => { dispatch(fetchCategories()) }, []);
-
-    if (workSelector.isLoading) {
-        return <></>
-    }
     return ( 
         <div className="px-2 px-sm-5 work-selector-container">
             <Dropdown>
@@ -30,7 +23,7 @@ export const WorkSelector: React.FC = () =>{
                     </Dropdown.Toggle>
                 </div>
                 <Dropdown.Menu variant="dark">
-                    {workSelector.data.services.map((service, index) => {
+                    {workSelector.data.services && workSelector.data.services.map((service, index) => {
                         return (
                             <Dropdown.Item key={index} onClick={(e)=>{dispatch(setSelectedService(service))}}>{service}</Dropdown.Item>
                         )
@@ -48,7 +41,7 @@ export const WorkSelector: React.FC = () =>{
             </div>
 
             <Dropdown.Menu variant="dark">
-                {workSelector.data.industries.map((industry, index) => {
+                {workSelector.data.industries && workSelector.data.industries.map((industry, index) => {
                     return (
                         <Dropdown.Item key={index} onClick={(e) => {dispatch(setSelectedIndustry(industry))}}>{industry}</Dropdown.Item>
                     )

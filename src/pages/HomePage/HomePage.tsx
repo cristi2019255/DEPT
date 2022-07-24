@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchClientCardsFirst, fetchClientCardsSecond, fetchClientLogos} from "../../services/redux";
+import { fetchCategories, fetchClientCardsFirst, fetchClientCardsSecond, fetchClientLogos, fetchQuote} from "../../services/redux";
 import { fetchHero } from "../../services/redux/homePageReducer/heroReducer";
 import { ClientCardList, ClientList, ClientQuote, ContactForm, Loading, WorkSelector } from "../../shared"
-import { ClientCardProps, ContactData} from "../../shared/types"
+import { ClientCardProps, ClientQuoteProps, ContactData, WorkSelectorProps} from "../../shared/types"
 import './HomePage.css'
 
 
@@ -15,7 +15,8 @@ export const HomePage: React.FC = () => {
     const clientCardsFirst: {isLoading:boolean, data:ClientCardProps[]} = useSelector((state: any) => state.homePage.client.first);
     const clientCardsSecond: {isLoading:boolean, data:ClientCardProps[]} = useSelector((state: any) => state.homePage.client.second);
     const clientsLogos: {isLoading:boolean, data:string[]} = useSelector((state: any) => state.homePage.logos);
-
+    const workSelector: {isLoading:boolean, data:WorkSelectorProps} = useSelector((state: any) => state.homePage.categories);
+    const quote: {isLoading:boolean, data:ClientQuoteProps} = useSelector((state: any) => state.homePage.quote);
 
     const onSubmitContactForm = (data: ContactData) => {
         console.log(data);
@@ -23,32 +24,45 @@ export const HomePage: React.FC = () => {
 
 
     const fetchData = () => {
-        dispatch<any>(fetchHero()) // works but don't like it
-        dispatch(fetchClientCardsFirst())
-        dispatch(fetchClientCardsSecond())
-        dispatch(fetchClientLogos())
+        dispatch<any>(fetchHero())
+        dispatch<any>(fetchCategories())
+        dispatch<any>(fetchClientCardsFirst(-1)) // -1 means all
+        dispatch<any>(fetchClientCardsSecond(-1)) // -1 means all
+        dispatch<any>(fetchClientLogos())
+        dispatch<any>(fetchQuote())
     }
 
     useEffect(() => { fetchData() }, []);
 
     return (
         <>  
-            {!hero.isLoading ? 
-                <section className="hero fw-700">
+           {hero.isLoading? <Loading/> :
+            (<>
+            <section className="hero fw-700">
                     <ClientCardList cards={hero.data}/>
-                </section>
-                : <></>
-            }
-
-            <main>
+            </section>
+            {workSelector.isLoading? <Loading/> : 
+                <>
                 <WorkSelector/>
-                {!clientCardsFirst.isLoading ? <ClientCardList cards = {clientCardsFirst.data}/> : <></>}
-                <ClientQuote/>
-                {!clientCardsSecond.isLoading? <ClientCardList cards = {clientCardsSecond.data}/>:<></>}
-                {!clientsLogos.isLoading? <ClientList clientsLogo = {clientsLogos.data}/>:<></>}
-                {hero.isLoading || clientCardsFirst.isLoading || clientCardsSecond.isLoading || clientsLogos.isLoading ? <Loading/> : <></>}
-                <ContactForm onSubmit={onSubmitContactForm}/>
-            </main>
+                {clientCardsFirst.isLoading? <Loading/> :
+                    <>
+                    <ClientCardList cards = {clientCardsFirst.data}/>
+                    {quote.isLoading? <Loading/> : 
+                        <>
+                        <ClientQuote/>
+                        {clientCardsSecond.isLoading? <Loading/> :
+                            <>
+                            <ClientCardList cards = {clientCardsSecond.data}/>
+                                {clientsLogos.isLoading? <Loading/> :
+                                <>
+                                <ClientList clientsLogo = {clientsLogos.data}/>
+                                <ContactForm onSubmit={onSubmitContactForm}/>
+                                </>}
+                            </>}
+                        </>}
+                    </>}
+                </>}
+            </>)}
         </>
     )
 }
