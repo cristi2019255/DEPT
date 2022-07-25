@@ -1,13 +1,16 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCategories, fetchClientCardsFirst, fetchClientCardsSecond, fetchClientLogos, fetchQuote} from "../../services/redux";
+import { useParams } from "react-router-dom";
+import { fetchCategories, fetchClientCardsFirst, fetchClientCardsSecond, fetchClientLogos, fetchQuote, setSelectedIndustry, setSelectedService} from "../../services/redux";
 import { fetchHero } from "../../services/redux/homePageReducer/heroReducer";
 import { ClientCardList, ClientList, ClientQuote, ContactForm, Loading, WorkSelector } from "../../shared"
-import { ClientCardProps, ClientQuoteProps, ContactData, WorkSelectorProps} from "../../shared/types"
+import { ClientCardProps, ClientQuoteProps, WorkSelectorProps} from "../../shared/types"
 import './HomePage.css'
 
 
 export const HomePage: React.FC = () => {
+
+    const {industry, service} = useParams();
 
     const dispatch = useDispatch();
 
@@ -27,7 +30,21 @@ export const HomePage: React.FC = () => {
         dispatch<any>(fetchQuote())
     }
 
-    useEffect(() => { fetchData() }, []);
+    const setFilters = () => {
+        if (industry){
+            dispatch(setSelectedIndustry(industry))
+        }
+        if (service){
+            dispatch(setSelectedService(service))
+        }
+    }
+
+    useEffect(() => { setFilters(); 
+                      fetchData(); 
+                    }, []);
+
+
+ 
 
     return (
         <>  

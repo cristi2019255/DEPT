@@ -4,7 +4,8 @@ import {Header, Footer, ToTopButton} from './shared';
 import {
   BrowserRouter as Router,
   Routes,
-  Route
+  Route,
+  Navigate
 } from 'react-router-dom';
 
 function App() {
@@ -15,12 +16,17 @@ function App() {
           <Header></Header>
           <Routes>
             <Route path="/" element={<HomePage></HomePage>}></Route>
+            
+            <Route path="/home" element={<Navigate to='/'/>}></Route>
+            <Route path="home/:industry" element={<HomePage></HomePage>}></Route>
+            <Route path="home/:industry/:service" element={<HomePage></HomePage>}></Route>
             <Route path="/work" element={<WorkPage></WorkPage>}></Route>
             <Route path="/services" element={<ServicesPage></ServicesPage>}></Route>
             <Route path="/stories" element={<StoriesPage></StoriesPage>}></Route>
             <Route path="/about" element={<AboutPage></AboutPage>}></Route>
             <Route path="/careers" element={<CareersPage></CareersPage>}></Route>
             <Route path="/contact" element={<ContactPage></ContactPage>}></Route>
+
             <Route path='*' element={<NotFoundPage />} />
           </Routes>
         </Router>
