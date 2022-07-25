@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchHero, fetchCategories, fetchClientCardsFirst, fetchClientCardsSecond, fetchClientLogos, fetchQuote, setSelectedIndustry, setSelectedService} from "../../services/redux";
 import { Loading } from "../../shared"
+import FadeInSection from "../../shared/components/FadeInSection/FadeInSection";
 import { ClientCardProps, ClientQuoteProps, WorkSelectorProps} from "../../shared/types"
 import './HomePage.css'
 
@@ -60,7 +61,7 @@ export const HomePage: React.FC = () => {
            {hero.isLoading? <Loading/> :
             (<>
             <section className="hero fw-700">
-                    <ClientCardList cards={hero.data}/>
+                    <ClientCardList cards={hero.data} hero={true}/>
             </section>
             {workSelector.isLoading? <Loading/> : 
                 <>
@@ -82,8 +83,12 @@ export const HomePage: React.FC = () => {
                             <ClientCardList cards = {clientCardsSecond.data} listDisplay={clientCardListDisplay}/>
                                 {clientsLogos.isLoading? <Loading/> :
                                 <>
-                                <ClientList clientsLogo = {clientsLogos.data}/>
-                                <ContactForm/>
+                                <FadeInSection>    
+                                    <ClientList clientsLogo = {clientsLogos.data}/>
+                                </FadeInSection>
+                                <FadeInSection>
+                                    <ContactForm/>
+                                </FadeInSection>
                                 </>}
                             </>}
                         </>}

@@ -4,12 +4,25 @@ import { useSelector } from "react-redux"
 import { ClientCardProps } from "../../types"
 import { ClientCard } from "../ClientCard"
 import { ClientNoteList } from "../ClientNoteLIst/ClientNoteList"
+import FadeInSection from "../FadeInSection/FadeInSection"
 import './ClientCardList.css'
 
-export const ClientCardList: React.FC<{cards: ClientCardProps[], listDisplay?: boolean}> = ({cards, listDisplay = false}) => {
+export const ClientCardList: React.FC<{cards: ClientCardProps[], listDisplay?: boolean, hero?:boolean}> = ({cards, listDisplay = false, hero = false}) => {
     
     const industryFilter: string = useSelector((state: any) => state.homePage.categories.data.selectedIndustry);
     const serviceFilter: string = useSelector((state: any) => state.homePage.categories.data.selectedService);
+
+    if (hero) {
+        return (
+            <>
+            {cards.length > 0 
+                && <div className="w-100">
+                    <ClientCard {...cards[0]} />
+                  </div>
+            }
+            </>  
+        )
+    }
 
     const cardsFiltered = cards.filter((card: ClientCardProps) => {
         return (industryFilter === "all" || (card.industry && (card.industry === industryFilter || card.industry === 'all'))) &&
@@ -38,14 +51,18 @@ export const ClientCardList: React.FC<{cards: ClientCardProps[], listDisplay?: b
                     }
 
                     const cardCol = (<Col xs={12} sm={12} md={colWidth} lg={colWidth}>
-                                        <ClientCard {...card} />
+                                        <FadeInSection>
+                                            <ClientCard {...card} />
+                                        </FadeInSection>
                                     </Col>)
 
                     if (card.notes){
                         const notes = (<Col className = 'bg-dark text-light' xs={12} sm={12} md={12 - colWidth} lg={12 - colWidth}>
-                                            <Container className = "d-flex flex-column h-100 justify-content-center p-5">
-                                                <ClientNoteList notes = {card.notes}/>
-                                            </Container>
+                                            <FadeInSection>
+                                                <Container className = "d-flex flex-column h-100 justify-content-center p-5">
+                                                    <ClientNoteList notes = {card.notes}/>
+                                                </Container>
+                                            </FadeInSection>
                                         </Col>)
 
                             return (<Row key={index} className = {((card.scaled && card.scaled !== 'right') || !card.scaled) ? "gx-0" : "gx-0 flex-row-reverse"}>
