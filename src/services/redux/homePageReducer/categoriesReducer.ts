@@ -20,7 +20,7 @@ const fetchCategories = createAsyncThunk<
   // returning mock since the API is not developed yet
   // TODO: change to real API call
   return await new Promise((resolve) =>
-    setTimeout(() => resolve(workSelector), 1000)
+    setTimeout(() => resolve(workSelector), 0)
   );
 });
 

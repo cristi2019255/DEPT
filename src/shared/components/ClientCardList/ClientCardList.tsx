@@ -2,7 +2,7 @@ import { Fragment } from "react"
 import { Col, Container, Row } from "react-bootstrap"
 import { useSelector } from "react-redux"
 import { ClientCardProps } from "../../types"
-import { ClientCard } from "../ClientCard/ClientCard"
+import { ClientCard } from "../ClientCard"
 import { ClientNoteList } from "../ClientNoteLIst/ClientNoteList"
 import './ClientCardList.css'
 

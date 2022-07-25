@@ -1,11 +1,18 @@
-import { useEffect, useState } from "react";
+import { lazy, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchHero, fetchCategories, fetchClientCardsFirst, fetchClientCardsSecond, fetchClientLogos, fetchQuote, setSelectedIndustry, setSelectedService} from "../../services/redux";
-import { ClientCardList, ClientList, ClientQuote, ContactForm, Loading, WorkSelector, ToggleSwitcher } from "../../shared"
+import { Loading } from "../../shared"
 import { ClientCardProps, ClientQuoteProps, WorkSelectorProps} from "../../shared/types"
 import './HomePage.css'
 
+/* Lazy loading shared components */
+const ClientCardList = lazy(() => import("../../shared/components/ClientCardList"));
+const ClientList = lazy(() => import("../../shared/components/ClientList"));
+const ClientQuote = lazy(() => import("../../shared/components/ClientQuote"));
+const ContactForm = lazy(() => import("../../shared/components/ContactForm"));
+const WorkSelector = lazy(() => import("../../shared/components/WorkSelector"));
+const ToggleSwitcher = lazy(() => import("../../shared/components/ToggleSwitcher"));
 
 export const HomePage: React.FC = () => {
 

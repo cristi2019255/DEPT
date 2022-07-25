@@ -13,7 +13,7 @@ const fetchQuote = createAsyncThunk<
 >("data/fetchQuote", async () => {
   // returning mock since the API is not developed yet
   // TODO: change to real API call
-  return await new Promise((resolve) => setTimeout(() => resolve(quote), 1000));
+  return await new Promise((resolve) => setTimeout(() => resolve(quote), 0));
 });
 
 const quoteReducer = createSlice({

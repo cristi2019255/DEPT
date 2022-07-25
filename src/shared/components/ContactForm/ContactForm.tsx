@@ -51,7 +51,7 @@ export const ContactForm: React.FC = () => {
             setSubmitedSuccesfully(true);
             setTimeout(()=>{
                 setSubmitedSuccesfully(false);
-            }, 4000);
+            }, 0);
         }).catch((err)=>{
             setOnSubmitError(err.message);
         })

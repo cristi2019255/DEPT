@@ -33,7 +33,7 @@ const fetchClientCardsFirst = createAsyncThunk<
       } else {
         resolve(clientCardsFirst.slice(0, amount));
       }
-    }, 1000)
+    }, 0)
   );
 });
 
@@ -54,7 +54,7 @@ const fetchClientCardsSecond = createAsyncThunk<
       } else {
         resolve(clientCardsSecond.slice(0, amount));
       }
-    }, 5000)
+    }, 0)
   );
 });
 
