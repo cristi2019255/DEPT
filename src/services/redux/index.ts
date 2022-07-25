@@ -9,6 +9,7 @@ import homePageReducer, {
   fetchQuote,
   setSelectedIndustry,
   setSelectedService,
+  fetchHero,
 } from "./homePageReducer";
 
 const rootReducer = combineReducers({
@@ -26,6 +27,7 @@ export const useAppDispatch: () => AppDispatch = useDispatch;
 export type RootState = ReturnType<typeof store.getState>;
 
 export {
+  fetchHero,
   fetchCategories,
   fetchClientCardsFirst,
   fetchClientCardsSecond,

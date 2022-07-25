@@ -1,9 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { fetchCategories, fetchClientCardsFirst, fetchClientCardsSecond, fetchClientLogos, fetchQuote, setSelectedIndustry, setSelectedService} from "../../services/redux";
-import { fetchHero } from "../../services/redux/homePageReducer/heroReducer";
-import { ClientCardList, ClientList, ClientQuote, ContactForm, Loading, WorkSelector } from "../../shared"
+import { fetchHero, fetchCategories, fetchClientCardsFirst, fetchClientCardsSecond, fetchClientLogos, fetchQuote, setSelectedIndustry, setSelectedService} from "../../services/redux";
+import { ClientCardList, ClientList, ClientQuote, ContactForm, Loading, WorkSelector, ToggleSwitcher } from "../../shared"
 import { ClientCardProps, ClientQuoteProps, WorkSelectorProps} from "../../shared/types"
 import './HomePage.css'
 
@@ -11,6 +10,7 @@ import './HomePage.css'
 export const HomePage: React.FC = () => {
 
     const {industry, service} = useParams();
+    const [clientCardListDisplay, setClientCardListDisplay] = useState(false);
 
     const dispatch = useDispatch();
 
@@ -43,8 +43,10 @@ export const HomePage: React.FC = () => {
                       fetchData(); 
                     }, []);
 
-
- 
+    
+    const handleClientCardListDisplayChange = () => {
+        setClientCardListDisplay(!clientCardListDisplay)
+    }
 
     return (
         <>  
@@ -58,7 +60,13 @@ export const HomePage: React.FC = () => {
                 <WorkSelector/>
                 {clientCardsFirst.isLoading? <Loading/> :
                     <>
-                    <ClientCardList cards = {clientCardsFirst.data}/>
+                    {window.innerWidth > 768 ? 
+                    <div className="px-2 px-sm-5 my-3">
+                        <ToggleSwitcher handleOnChange={handleClientCardListDisplayChange}/>
+                    </div>
+                    : <></>}
+                
+                    <ClientCardList cards = {clientCardsFirst.data} listDisplay={clientCardListDisplay}/>
                     {quote.isLoading? <Loading/> : 
                         <>
                         <ClientQuote/>

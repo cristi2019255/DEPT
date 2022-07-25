@@ -6,7 +6,7 @@ import { ClientCard } from "../ClientCard/ClientCard"
 import { ClientNoteList } from "../ClientNoteLIst/ClientNoteList"
 import './ClientCardList.css'
 
-export const ClientCardList: React.FC<{cards: ClientCardProps[]}> = ({cards}) => {
+export const ClientCardList: React.FC<{cards: ClientCardProps[], listDisplay?: boolean}> = ({cards, listDisplay = false}) => {
     
     const industryFilter: string = useSelector((state: any) => state.homePage.categories.data.selectedIndustry);
     const serviceFilter: string = useSelector((state: any) => state.homePage.categories.data.selectedService);
@@ -16,18 +16,24 @@ export const ClientCardList: React.FC<{cards: ClientCardProps[]}> = ({cards}) =>
                (serviceFilter  === "all" || (card.serviceDomain && (card.serviceDomain === serviceFilter || card.serviceDomain === 'all')))
     })
 
-   const cardsSorted = arrangeCards(cardsFiltered)
+
+   const cardsSorted = arrangeCards(cardsFiltered, listDisplay)
     
     return (
         <div className="w-100">
             <Row className = "gx-0">
                 { cardsSorted.map((card: ClientCardProps, index: number) => {
                     let colWidth = 6
-                    if (card.scaled){
-                        if (card.scaled === "full"){
-                            colWidth = 12
-                        }else{
-                            colWidth = 8
+                    /* if list display then each element takes full width*/ 
+                    if (listDisplay){
+                        colWidth = 12
+                    }else{
+                        if (card.scaled){
+                            if (card.scaled === "full"){
+                                colWidth = 12
+                            }else{
+                                colWidth = 8
+                            }
                         }
                     }
 
@@ -59,9 +65,14 @@ export const ClientCardList: React.FC<{cards: ClientCardProps[]}> = ({cards}) =>
         )
 } 
 
-const arrangeCards: (cards:ClientCardProps[]) => ClientCardProps[] = (cards: ClientCardProps[]) => {
+const arrangeCards: (cards:ClientCardProps[], listDisplay: boolean) => ClientCardProps[] = (cards: ClientCardProps[], listDisplay: boolean) => {
     /* Sorting cards in order to not allow gaps between cards on size medium+ devices */
     
+    /* If displaying in list no need to rearrange */
+    if (listDisplay){
+        return cards
+    }
+
     /* If window size is small no arrangement is needed */
     if (window.innerWidth < 768) {
         return cards

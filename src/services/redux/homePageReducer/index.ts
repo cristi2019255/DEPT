@@ -15,6 +15,7 @@ const homePageReducer = combineReducers({
 
 export default homePageReducer;
 
+export { fetchHero } from "./heroReducer";
 export {
   fetchClientCardsFirst,
   fetchClientCardsSecond,

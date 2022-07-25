@@ -14,7 +14,7 @@ export const WorkSelector: React.FC = () =>{
     const workSelector: {isLoading:boolean, data:WorkSelectorProps, error: string} = useSelector((state: any) => state.homePage.categories);
     
     return ( 
-        <div className="px-2 px-sm-5 work-selector-container">
+        <div className="px-2 px-sm-5 my-3 work-selector-container">
             <Dropdown>
                 <div className = "d-flex justify-content-center">  
                     <div className="opacity-50 mr-3">{t("label.categories.showMe")}</div>

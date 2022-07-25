@@ -9,9 +9,6 @@
   margin-left: 10px;
 }
 
-.work-selector-container{
-  margin: 10px auto;
-}
 
 @media screen and (min-width: 325px) {
   .work-selector-container{

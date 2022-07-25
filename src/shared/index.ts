@@ -10,6 +10,7 @@ import { WorkSelector } from "./components/WorkSelector/WorkSelector";
 import { ContactForm } from "./components/ContactForm/ContactForm";
 import { ToTopButton } from "./components/ToTopButton/ToTopButton";
 import { Loading } from "./components/LoadingSpinner/Loading";
+import { ToggleSwitcher } from "./components/ToggleSwitcher/ToggleSwitcher";
 
 export {
   Header,
@@ -24,4 +25,5 @@ export {
   ContactForm,
   ToTopButton,
   Loading,
+  ToggleSwitcher,
 };
