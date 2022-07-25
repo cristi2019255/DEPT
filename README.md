@@ -1,6 +1,11 @@
 # DEPT
 DEPT React assignment
 
+### Quick start
+In order to run the project run the following comands in your command line \
+`npm i` // installs all the needed dependencies
+`npm start` // starts the app
+
 ## Available Scripts
 
 In the project directory, you can run:
