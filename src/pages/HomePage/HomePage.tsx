@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchHero, fetchCategories, fetchClientCardsFirst, fetchClientCardsSecond, fetchClientLogos, fetchQuote, setSelectedIndustry, setSelectedService} from "../../services/redux";
 import { Loading } from "../../shared"
-import FadeInSection from "../../shared/components/FadeInSection/FadeInSection";
 import { ClientCardProps, ClientQuoteProps, WorkSelectorProps} from "../../shared/types"
+import { FadeInSection } from "../../shared";
 import './HomePage.css'
 
 /* Lazy loading shared components */
@@ -68,7 +68,7 @@ export const HomePage: React.FC = () => {
                 <WorkSelector/>
                 {clientCardsFirst.isLoading? <Loading/> :
                     <>
-                    {window.innerWidth > 768 ? 
+                    {window.innerWidth > 768 ? // if screen is wide enable grid/list switcher 
                     <div className="px-2 px-sm-5 my-3">
                         <ToggleSwitcher handleOnChange={handleClientCardListDisplayChange}/>
                     </div>

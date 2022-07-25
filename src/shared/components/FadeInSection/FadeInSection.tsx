@@ -29,4 +29,4 @@ const FadeInSection: React.FC<{children?: React.ReactNode}> = ({
   };
 
 
-export default FadeInSection;
+export {FadeInSection};

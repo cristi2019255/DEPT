@@ -4,7 +4,7 @@ import { useSelector } from "react-redux"
 import { ClientCardProps } from "../../types"
 import { ClientCard } from "../ClientCard"
 import { ClientNoteList } from "../ClientNoteLIst/ClientNoteList"
-import FadeInSection from "../FadeInSection/FadeInSection"
+import { FadeInSection } from "../FadeInSection/FadeInSection"
 import './ClientCardList.css'
 
 export const ClientCardList: React.FC<{cards: ClientCardProps[], listDisplay?: boolean, hero?:boolean}> = ({cards, listDisplay = false, hero = false}) => {
