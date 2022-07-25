@@ -72,7 +72,7 @@ export const HomePage: React.FC = () => {
                         <ClientQuote/>
                         {clientCardsSecond.isLoading? <Loading/> :
                             <>
-                            <ClientCardList cards = {clientCardsSecond.data}/>
+                            <ClientCardList cards = {clientCardsSecond.data} listDisplay={clientCardListDisplay}/>
                                 {clientsLogos.isLoading? <Loading/> :
                                 <>
                                 <ClientList clientsLogo = {clientsLogos.data}/>
